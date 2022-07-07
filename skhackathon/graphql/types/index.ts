@@ -1,2 +1,3 @@
-export { Query } from "./Keyword";
 export * from "./Course";
+export * from "./Keyword";
+export * from "./Question";

@@ -5,9 +5,20 @@
 
 
 import type { core, connectionPluginCore } from "nexus"
-
+declare global {
+  interface NexusGenCustomInputMethods<TypeName extends string> {
+    /**
+     * A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
+     */
+    date<FieldName extends string>(fieldName: FieldName, opts?: core.CommonInputFieldConfig<TypeName, FieldName>): void // "DateTime";
+  }
+}
 declare global {
   interface NexusGenCustomOutputMethods<TypeName extends string> {
+    /**
+     * A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
+     */
+    date<FieldName extends string>(fieldName: FieldName, ...opts: core.ScalarOutSpread<TypeName, FieldName>): void // "DateTime";
     /**
      * Adds a Relay-style connection to the type, with numerous options for configuration
      *
@@ -37,17 +48,28 @@ export interface NexusGenScalars {
   Float: number
   Boolean: boolean
   ID: string
+  DateTime: any
 }
 
 export interface NexusGenObjects {
-  Keyword: { // root type
+  Course: { // root type
     id?: number | null; // Int
     imageUrl?: string | null; // String
     instructor?: string | null; // String
     name?: string | null; // String
     type?: string | null; // String
   }
+  Keyword: { // root type
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
+    id?: number | null; // Int
+    word?: string | null; // String
+  }
   Query: {};
+  Question: { // root type
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
+    id?: number | null; // Int
+    question?: string | null; // String
+  }
 }
 
 export interface NexusGenInterfaces {
@@ -61,28 +83,50 @@ export type NexusGenRootTypes = NexusGenObjects
 export type NexusGenAllTypes = NexusGenRootTypes & NexusGenScalars
 
 export interface NexusGenFieldTypes {
-  Keyword: { // field return type
+  Course: { // field return type
     id: number | null; // Int
     imageUrl: string | null; // String
     instructor: string | null; // String
     name: string | null; // String
     type: string | null; // String
   }
+  Keyword: { // field return type
+    createdAt: NexusGenScalars['DateTime'] | null; // DateTime
+    id: number | null; // Int
+    word: string | null; // String
+  }
   Query: { // field return type
-    SelectWord: Array<NexusGenRootTypes['Keyword'] | null> | null; // [Keyword]
+    keywords: Array<NexusGenRootTypes['Keyword'] | null> | null; // [Keyword]
+    questions: Array<NexusGenRootTypes['Question'] | null> | null; // [Question]
+  }
+  Question: { // field return type
+    createdAt: NexusGenScalars['DateTime'] | null; // DateTime
+    id: number | null; // Int
+    question: string | null; // String
   }
 }
 
 export interface NexusGenFieldTypeNames {
-  Keyword: { // field return type name
+  Course: { // field return type name
     id: 'Int'
     imageUrl: 'String'
     instructor: 'String'
     name: 'String'
     type: 'String'
   }
+  Keyword: { // field return type name
+    createdAt: 'DateTime'
+    id: 'Int'
+    word: 'String'
+  }
   Query: { // field return type name
-    SelectWord: 'Keyword'
+    keywords: 'Keyword'
+    questions: 'Question'
+  }
+  Question: { // field return type name
+    createdAt: 'DateTime'
+    id: 'Int'
+    question: 'String'
   }
 }
 

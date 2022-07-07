@@ -1,7 +1,7 @@
 import { objectType } from "nexus";
 
 export const Course = objectType({
-  name: "Keyword",
+  name: "Course",
   definition(t) {
     t.int("id");
     t.string("name");
