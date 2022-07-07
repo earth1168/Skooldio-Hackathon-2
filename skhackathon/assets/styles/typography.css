@@ -1,0 +1,10 @@
+@font-face {
+  font-family: 'Chulabhorn Likit Text';
+  src: url('../fonts/Anuphan/Anuphan-Regular.woff') format('truetype');
+}
+
+@font-face {
+  font-family: 'Chulabhorn Likit Text';
+  font-weight: 600;
+  src: url('../fonts/Anuphan/Anuphan-SemiBold.woff') format('truetype');
+}

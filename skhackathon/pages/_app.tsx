@@ -1,10 +1,10 @@
-import "../styles/globals.css";
-import type { AppProps } from "next/app";
-import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
+import '../assets/styles/globals.css';
+import type { AppProps } from 'next/app';
+import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 
 const client = new ApolloClient({
   cache: new InMemoryCache(),
-  uri: "/api/graphql",
+  uri: '/api/graphql',
 });
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -12,7 +12,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <ApolloProvider client={client}>
       <Component {...pageProps} />;
     </ApolloProvider>
-  )
+  );
 }
 
 export default MyApp;
