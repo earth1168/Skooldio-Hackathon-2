@@ -1,10 +1,9 @@
-/* eslint-disable @next/next/no-img-element */
 import { useState } from 'react';
 
 const JobSelection = () => {
   const [selectedJob, setSelectedJob] = useState('');
   const jobCardStyling =
-    'absolute opacity-80 left-[50%] z-[5] transform translate-x-[-50%] grayscale hover:grayscale-0 transition-all duration-200 cursor-pointer';
+    'absolute opacity-80 left-[50%] z-[5] transform translate-x-[-50%] grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-200 cursor-pointer';
   const selectedCardStyling = 'z-20 grayscale-0 opacity-100 ';
   const jobs = ['business', 'tech', 'data', 'design'];
   return (
