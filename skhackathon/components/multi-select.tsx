@@ -58,7 +58,7 @@ const MultiSelect: FunctionComponent<MultiSelectProps> = ({ name }) => {
               onClick={() => handleKnowledge(knowledge, word)}
             >
               <Button
-                className="h-full flex justify-center items-center"
+                className="h-full flex justify-center items-center hover:border-[#ff6928] transition-all"
                 variant={knowledge.includes(word) ? 'orange' : undefined}
               >
                 {word}
@@ -79,7 +79,7 @@ const MultiSelect: FunctionComponent<MultiSelectProps> = ({ name }) => {
               onClick={() => handleWishList(wishList, word)}
             >
               <Button
-                className="h-full flex justify-center items-center"
+                className="h-full flex justify-center items-center hover:border-[#36b2ff] transition-all"
                 variant={wishList.includes(word) ? 'blue' : undefined}
               >
                 {word}
