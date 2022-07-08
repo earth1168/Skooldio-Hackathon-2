@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 
 const title: string = 'ไพ่เบิกเนตรเพื่อวัดศักยภาพของคุณกับ Skooldio';
 const description: string = 'อย่ารอช้ารีบมาค้นพบตัวเองกัน!';
-const imageUrl: string = 'https://i.ibb.co/gRYwgVk/earth-og.jpg';
+const imageUrl: string = 'https://i.ibb.co/5kC22BG/earth-og.jpg';
 const favicon: string = `/favicon.ico`;
 let mainUrl: string = '';
 let path: string = '';
