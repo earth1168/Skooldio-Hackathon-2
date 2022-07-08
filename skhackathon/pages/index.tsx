@@ -12,6 +12,7 @@ import Landing from '../components/landing';
 import MultiSelect from '../components/multi-select';
 import SuggestedCourses from '../components/suggested-courses';
 import Header from '../components/header';
+import Navbar from '../components/navbar';
 
 const Home: NextPage = () => {
   const sectionsContainer = useRef() as MutableRefObject<HTMLDivElement>;
@@ -35,6 +36,9 @@ const Home: NextPage = () => {
     <>
       <Header />
       <main className="gradient-bg" ref={sectionsContainer}>
+        <div className="fixed w-screen z-40">
+          <Navbar />
+        </div>
         <Landing />
         {/* <img src="images/doorway.png" alt="doorway" /> */}
         {/* <Welcome /> */}
