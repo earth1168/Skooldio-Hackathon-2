@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { FunctionComponent, useEffect, useState } from 'react';
 import TinderCard from 'react-tinder-card';
 import EyeLoading from './eye-loading';
 import QuestionCard from './question-card';
@@ -22,8 +22,11 @@ const getAllQuestion = gql`
 //   { id: 3, question: 'คุณสนใจไหม?' },
 //   { id: 4, question: 'อ้ากกกกกก?' },
 // ];
+type TinderCardsProps = {
+  name: string;
+};
 
-const TinderCards = () => {
+const TinderCards: FunctionComponent<TinderCardsProps> = ({ name }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isDone, setIsDone] = useState(false);
 
@@ -67,14 +70,16 @@ const TinderCards = () => {
         <>
           <div className="flex flex-col text-center items-center justify-center p-4">
             <h1 className="typo-h1 z-10">
-              ก่อนจะไปถึงบทสรุป
+              เพื่อความแม่นยำ
               <br />
-              ไพคัดสรรอยากมองคุณ
+              ทางสำนักขอรู้จักกับ
               <br />
-              ให้ลึกขึ้น (rewrite)
+              คุณ{name}อีกนิดนะ
             </h1>
             <p className="typo-p z-10 mt-3">
-              ตอบคำถามตามความเป็นจริงเพื่อการจัดสรรคอร์สที่เหมาะกับคุณนะ
+              ปัดไพ่ไปทางวาถ้าคุณเห็นด้วย
+              <br />
+              หรือปัดซ้ายถ้าคุณไม่เห็นด้วย
             </p>
             <img
               className="absolute top-0"

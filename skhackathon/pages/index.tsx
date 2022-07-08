@@ -79,7 +79,7 @@ const Home: NextPage = () => {
           <JobSelection />
         </div>
         <MultiSelect name={name} />
-        <TinderCards />
+        <TinderCards name={name} />
         <InstructorCarousel />
         <SuggestedCourses />
       </main>
