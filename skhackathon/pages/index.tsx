@@ -41,12 +41,12 @@ const Home: NextPage = () => {
         <section
           className={`flex flex-col mt-[120px] items-center h-[70vh] transition-all duration-500`}
         >
-          <h1 className="typo-h1 text-white text-center">
+          <h1 className="typo-h1 text-white text-center z-30">
             ก่อนพิธีจะเริ่ม... <br />
             เราขอทราบชื่อของคุณ
           </h1>
           <input
-            className="border-2 border-gray-200 rounded w-[327px] h-[58px] py-2 px-3 my-4 text-gray-700 leading-tight focus:outline-none focus:border-purple-500 typo-h1 text-center"
+            className="border-2 z-30 border-gray-200 rounded w-[327px] h-[58px] py-2 px-3 my-4 text-gray-700 leading-tight focus:outline-none focus:border-purple-500 typo-h1 text-center"
             id="username"
             type="text"
             placeholder="ตัวอย่าง เอิร์ธ"
