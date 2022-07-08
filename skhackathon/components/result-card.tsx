@@ -32,10 +32,12 @@ const ResultCard = () => {
     <section className="text-white text-center mt-16" ref={sectionsContainer}>
       <div className="relative overflow-hidden">
         <h1 className="typo-h1 mb-12">
-          ก่อนที่เราจะคัดสรรคอร์สที่ เหมาะสมคุณ... <br />
-          สำนัก SKOOLDIO ได้วิเคราะห์
+          ก่อนที่เราจะคัดสรรคอร์ส
           <br />
-          ศักยภาพของ คุณมาให้แล้ว
+          ที่เหมาะสมคุณ... <br />
+          สำนัก SKOOLDIO <br />
+          ได้วิเคราะห์ศักยภาพ <br />
+          ของคุณมาให้แล้ว
         </h1>
         <img
           className="absolute top-8 left-2"

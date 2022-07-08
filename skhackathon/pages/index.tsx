@@ -16,40 +16,30 @@ import Header from '../components/header';
 const Home: NextPage = () => {
   const sectionsContainer = useRef() as MutableRefObject<HTMLDivElement>;
   const [activeStep, setActiveStep] = useState(-1);
-  useEffect(() => {
-    scrollama()
-      .setup({
-        step: Array.from(sectionsContainer.current.children) as HTMLElement[],
-        // debug: true,
-        // offset: 0.5,
-        // once: true,
-      })
-      .onStepEnter(({ index }) => {
-        setActiveStep(index);
-      });
-    // console.log(activeStep);
-  }, [activeStep]);
+  // useEffect(() => {
+  //   scrollama()
+  //     .setup({
+  //       step: Array.from(sectionsContainer.current.children) as HTMLElement[],
+  //       // debug: true,
+  //       offset: 0.8,
+  //       // once: true,
+  //     })
+  //     .onStepEnter(({ index }) => {
+  //       setActiveStep(index);
+  //     });
+  //   // console.log(activeStep);
+  // }, [activeStep]);
 
   const [name, setName] = useState('');
   return (
     <>
-      {/* <Head>
-        <title>SPENCII | คัดสรรคอร์สให้คุณ</title>
-        <meta
-          name="description"
-          content="หากคุณกำลังหลงทางหรือสับสน ไม่ต้องกังวลไปเราจะช่วยคัดสรรคอร์สให้คุณเอง"
-        />
-        <link rel="icon" href="/favicon.ico" />
-      </Head> */}
       <Header />
       <main className="gradient-bg" ref={sectionsContainer}>
-        {/* <Landing /> */}
-        <img src="images/doorway.svg" alt="doorway" />
-        <Welcome />
+        <Landing />
+        {/* <img src="images/doorway.png" alt="doorway" /> */}
+        {/* <Welcome /> */}
         <section
-          className={`flex flex-col items-center h-[70vh] transition-all duration-500 ${
-            activeStep >= 2 ? 'opacity-100' : 'opacity-0'
-          }`}
+          className={`flex flex-col mt-[120px] items-center h-[70vh] transition-all duration-500`}
         >
           <h1 className="typo-h1 text-white text-center">
             ก่อนพิธีจะเริ่ม... <br />
@@ -67,10 +57,16 @@ const Home: NextPage = () => {
             to="job-selection"
             spy={true}
             smooth={true}
-            offset={-130}
+            offset={-30}
             duration={500}
           >
-            <div className="flex cursor-pointer justify-center items-center w-[100px] h-[100px] border border-white rounded-full text-white mt-8">
+            <div
+              className={`flex cursor-pointer justify-center items-center w-[100px] h-[100px] border border-white rounded-full text-white mt-8 transition-all duration-1000 ${
+                name !== ''
+                  ? 'bg-yellow-600 bg-opacity-40 font-bold shadow-inner shadow-yellow-200'
+                  : null
+              }`}
+            >
               ไปต่อ
             </div>
           </Link>

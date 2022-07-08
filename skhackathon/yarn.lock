@@ -312,7 +312,7 @@
 
 "@prisma/client@^4.0.0":
   version "4.0.0"
-  resolved "https://registry.npmjs.org/@prisma/client/-/client-4.0.0.tgz"
+  resolved "https://registry.yarnpkg.com/@prisma/client/-/client-4.0.0.tgz#ed2f46930a1da0d8ae88d7965485973576b04270"
   integrity sha512-g1h2OGoRo7anBVQ9Cw3gsbjwPtvf7i0pkGxKeZICtwkvE5CZXW+xZF4FZdmrViYkKaAShbISL0teNpu9ecpf4g==
   dependencies:
     "@prisma/engines-version" "3.16.0-49.da41d2bb3406da22087b849f0e911199ba4fbf11"
@@ -2327,7 +2327,7 @@ scheduler@^0.23.0:
 
 scrollama@^3.2.0:
   version "3.2.0"
-  resolved "https://registry.npmjs.org/scrollama/-/scrollama-3.2.0.tgz"
+  resolved "https://registry.yarnpkg.com/scrollama/-/scrollama-3.2.0.tgz#90ac1765a1d2b7999ab7f971b4f71b9e2508b60c"
   integrity sha512-PIPwB1kYBnbw/ezvPBJa5dCN5qEwokfpAkI3BmpZWAwcVID4nDf1qH6WV16A2fQaJmsKx0un5S/zhxN+PQeKDQ==
 
 semver@^6.3.0:

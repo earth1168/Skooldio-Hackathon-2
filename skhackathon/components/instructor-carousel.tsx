@@ -9,7 +9,7 @@ const InstructorCarousel = () => {
             <br />
             จอมเวทยัง<span className="text-orange-400">พัฒนาได้อีกไกล</span>
           </h1>
-          <p className="typo-p px-4 my-4 px-4">
+          <p className="typo-p my-4 px-4">
             สำนัก SKOOLDIO แห่งนี้ <br />
             พร้อมส่ง เหล่าเทพผู้ยิ่งใหญ่ ไปสนับสนุน
             <br />

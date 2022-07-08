@@ -4,27 +4,26 @@ import EyeLoading from './eye-loading';
 import QuestionCard from './question-card';
 import ResultCard from './result-card';
 
-const questions = [
-  { id: 0, question: 'คุณสนใจด้านการเขียนโค้ดไหม?' },
-  { id: 2, question: 'คุณสนใจด้านการเขียนไหม?' },
-  { id: 3, question: 'คุณสนใจไหม?' },
-  { id: 4, question: 'อ้ากกกกกก?' },
-];
+import { gql, useQuery } from '@apollo/client';
+import { Question } from '@prisma/client';
+
+const getAllQuestion = gql`
+  query getAllQuestion {
+    questions {
+      id
+      question
+    }
+  }
+`;
+
+// const questions = [
+//   { id: 0, question: 'คุณสนใจด้านการเขียนโค้ดไหม?' },
+//   { id: 2, question: 'คุณสนใจด้านการเขียนไหม?' },
+//   { id: 3, question: 'คุณสนใจไหม?' },
+//   { id: 4, question: 'อ้ากกกกกก?' },
+// ];
 
 const TinderCards = () => {
-  const onSwipe = (direction: string, name: string) => {
-    console.log('You swiped: ' + direction + name);
-    if (name === questions[questions.length - 1].question) {
-      setInterval(() => {
-        setIsLoading(true);
-      }, 1000);
-    }
-  };
-
-  const onOutOfFrame = (id: number) => {
-    console.log(id + ' left the screen');
-  };
-
   const [isLoading, setIsLoading] = useState(false);
   const [isDone, setIsDone] = useState(false);
 
@@ -35,6 +34,26 @@ const TinderCards = () => {
       }, 3000);
     }
   }, [isLoading]);
+
+  const { loading, error, data } = useQuery(getAllQuestion);
+
+  if (loading) return 'Loading...';
+  if (error) return `Error! ${error.message}`;
+  const questions = data.questions;
+  // console.log(questions);
+
+  const onSwipe = (direction: string, name: string) => {
+    // console.log('You swiped: ' + direction + name);
+    if (name === questions[questions.length - 1].question) {
+      setInterval(() => {
+        setIsLoading(true);
+      }, 1000);
+    }
+  };
+
+  const onOutOfFrame = (id: number) => {
+    // console.log(id + ' left the screen');
+  };
 
   return (
     <section
@@ -64,7 +83,7 @@ const TinderCards = () => {
             />
           </div>
           <div className="relative">
-            {[...questions].reverse().map(({ id, question }) => (
+            {[...questions].reverse().map(({ id, question }: Question) => (
               // @ts-ignore
               <TinderCard
                 className="absolute"

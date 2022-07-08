@@ -1,3 +1,6 @@
+import { gql, useQuery } from '@apollo/client';
+import { Keyword } from '@prisma/client';
+
 import { FunctionComponent } from 'react';
 import { useState } from 'react';
 import Button from './button';
@@ -6,7 +9,14 @@ type MultiSelectProps = {
   name: string;
 };
 
-const choices = ['พัฒนาเว็บไซต์', 'พัฒนาเว็บ', 'พัฒนาเว็บไซต์sdasds'];
+const getAllKeyword = gql`
+  query getKeyword {
+    keywords {
+      id
+      word
+    }
+  }
+`;
 
 const MultiSelect: FunctionComponent<MultiSelectProps> = ({ name }) => {
   const [knowledge, setKnowledge] = useState([] as string[]);
@@ -28,6 +38,13 @@ const MultiSelect: FunctionComponent<MultiSelectProps> = ({ name }) => {
     }
   };
 
+  const { loading, error, data } = useQuery(getAllKeyword);
+
+  if (loading) return 'Loading...';
+  if (error) return `Error! ${error.message}`;
+
+  const keywords = data.keywords;
+
   return (
     <section className="flex flex-col items-center">
       <div>
@@ -35,15 +52,16 @@ const MultiSelect: FunctionComponent<MultiSelectProps> = ({ name }) => {
           คุณ{name}มีความรู้ด้าน
         </h1>
         <div className="grid grid-cols-2 gap-4 px-4 mb-20">
-          {choices.map((choice, index) => (
+          {keywords.map(({ id, word }: Keyword) => (
             <button
-              key={`choice-${index}`}
-              onClick={() => handleKnowledge(knowledge, choice)}
+              key={`keyword-${id}`}
+              onClick={() => handleKnowledge(knowledge, word)}
             >
               <Button
-                variant={knowledge.includes(choice) ? 'orange' : undefined}
+                className="h-full flex justify-center items-center"
+                variant={knowledge.includes(word) ? 'orange' : undefined}
               >
-                {choice}
+                {word}
               </Button>
             </button>
           ))}
@@ -55,13 +73,16 @@ const MultiSelect: FunctionComponent<MultiSelectProps> = ({ name }) => {
           ที่จะเรียนรู้
         </h1>
         <div className="grid grid-cols-2 gap-4 px-4 mb-20">
-          {choices.map((choice, index) => (
+          {keywords.map(({ id, word }: Keyword) => (
             <button
-              key={`choice-${index}`}
-              onClick={() => handleWishList(wishList, choice)}
+              key={`choice-${id}`}
+              onClick={() => handleWishList(wishList, word)}
             >
-              <Button variant={wishList.includes(choice) ? 'blue' : undefined}>
-                {choice}
+              <Button
+                className="h-full flex justify-center items-center"
+                variant={wishList.includes(word) ? 'blue' : undefined}
+              >
+                {word}
               </Button>
             </button>
           ))}
