@@ -1,13 +1,10 @@
 import type { NextPage } from 'next';
-import Head from 'next/head';
-import { useState, useEffect, useRef, MutableRefObject } from 'react';
-import scrollama from 'scrollama';
+import { useState } from 'react';
 import { Link } from 'react-scroll';
 
 import InstructorCarousel from '../components/instructor-carousel';
 import JobSelection from '../components/job-selection';
 import TinderCards from '../components/tinder-cards';
-import Welcome from '../components/welcome';
 import Landing from '../components/landing';
 import MultiSelect from '../components/multi-select';
 import SuggestedCourses from '../components/suggested-courses';
@@ -15,33 +12,15 @@ import Header from '../components/header';
 import Navbar from '../components/navbar';
 
 const Home: NextPage = () => {
-  const sectionsContainer = useRef() as MutableRefObject<HTMLDivElement>;
-  const [activeStep, setActiveStep] = useState(-1);
-  // useEffect(() => {
-  //   scrollama()
-  //     .setup({
-  //       step: Array.from(sectionsContainer.current.children) as HTMLElement[],
-  //       // debug: true,
-  //       offset: 0.8,
-  //       // once: true,
-  //     })
-  //     .onStepEnter(({ index }) => {
-  //       setActiveStep(index);
-  //     });
-  //   // console.log(activeStep);
-  // }, [activeStep]);
-
   const [name, setName] = useState('');
   return (
     <>
       <Header />
-      <main className="gradient-bg" ref={sectionsContainer}>
+      <main className="gradient-bg">
         <div className="fixed w-screen z-40">
           <Navbar />
         </div>
         <Landing />
-        {/* <img src="images/doorway.png" alt="doorway" /> */}
-        {/* <Welcome /> */}
         <section
           className={`flex flex-col mt-[120px] items-center h-[70vh] transition-all duration-500`}
         >
@@ -49,13 +28,20 @@ const Home: NextPage = () => {
             ก่อนพิธีจะเริ่ม... <br />
             เราขอทราบชื่อของคุณ
           </h1>
-          <input
-            className="border-2 z-30 border-gray-200 rounded w-[327px] h-[58px] py-2 px-3 my-4 text-gray-700 leading-tight focus:outline-none focus:border-purple-500 typo-h1 text-center"
-            id="username"
-            type="text"
-            placeholder="ตัวอย่าง เอิร์ธ"
-            onChange={(e) => setName(e.target.value)}
-          />
+          <div className="relative">
+            <input
+              className="border-2 z-30 border-gray-200 rounded w-[300px] h-[58px] py-2 px-3 my-4 text-gray-700 leading-tight focus:outline-none focus:border-purple-500 typo-h1 text-center"
+              id="username"
+              type="text"
+              placeholder="ตัวอย่าง เอิร์ธ"
+              onChange={(e) => setName(e.target.value)}
+            />
+            <img
+              className="absolute -top-[60px] -left-[90px]"
+              src="/images/witch.png"
+              alt="witch"
+            />
+          </div>
           <Link
             activeClass="active"
             to="job-selection"
